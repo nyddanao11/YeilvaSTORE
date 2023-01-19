@@ -83,6 +83,7 @@ nav ul li  a{
   text-decoration: none;
   font-weight: bold;
   margin-inline-end: 0.75em;
+   font-family: monospace;
   
 }
 nav ul li a:hover{
