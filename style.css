@@ -258,86 +258,23 @@ position: relative;
       width: 100%;
       height: auto;
     }
+   
 
-
-
-
-
-.buy{
+.featured h1{
   display: flex;
   align-items: center;
   justify-content: center;
- margin-top: 30px;
-}
-
-
-.buy .button{
-  background-color: #05981d;
-  border: none;
-  color: white;
-  padding: 18px 38px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 20px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-#landing{
-  display: flex;
-  flex-direction: column;
-  align-items: justify;
-  justify-content: center;
-  width:100%;
-}
-
- 
-
-
-
-.benefits ul{
-/*  list-style-type: none;*/
-
-}
-
-.color01{
-  padding:10px;
-}
-
-.color{
-  color:#6D041B;
-  font-size: 40px;
+  color: black;
+  font-size: 30px;
+  padding-top: 10px;
+margin-bottom: 0px;
   
 }
-.color01 p  {
-      text-indent: 40px;
-      text-align: justify;
-      letter-spacing: 2px;
-      color: black;
-
-      }
-
-
-
-
-#landing .benefits{
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-/*  margin-left: 25px;*/
-
+.featured h1 span{
+  color:red;
 }
 
 
-
-#landing .button:hover{
-      /*color:#818E81;
-      background-color: #79D479;*/
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
-        0 3px 6px rgba(0, 0, 0, 0.23);
-    transform: translate(0px, -8px);
-}
 
 #apklink{
 	display: flex;
