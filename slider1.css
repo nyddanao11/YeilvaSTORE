@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Slider</title>
+  <link rel="stylesheet" href="<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Slider</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.css">
+  <style>
+    .main-carousel {
+      width: 75%;
+      margin: 0 auto;
+    }
+    .carousel-cell {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-carousel">
+    <img class="carousel-cell" src="path/to/image1.jpg" alt="image1">
+    <img class="carousel-cell" src="path/to/image2.jpg" alt="image2">
+    <img class="carousel-cell" src="path/to/image3.jpg" alt="image3">
+  </div>
+  <script src="path/to/flickity.pkgd.min.js"></script>
+  <script>
+    var flkty = new Flickity( '.main-carousel', {
+      cellAlign: 'left',
+      contain: true,
+      wrapAround: true,
+      autoPlay: true,
+      aspectRatio: 1.5
+    });
+  </script>
+</body>
+</html>
+">
+  <style>
+    .main-carousel {
+      width: 75%;
+      margin: 0 auto;
+    }
+    .carousel-cell {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-carousel">
+    <img class="carousel-cell" src="path/to/image1.jpg" alt="image1">
+    <img class="carousel-cell" src="path/to/image2.jpg" alt="image2">
+    <img class="carousel-cell" src="path/to/image3.jpg" alt="image3">
+  </div>
+  <script src="path/to/flickity.pkgd.min.js"></script>
+  <script>
+    var flkty = new Flickity( '.main-carousel', {
+      cellAlign: 'left',
+      contain: true,
+      wrapAround: true,
+      autoPlay: true,
+      aspectRatio: 1.5
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.pkgd.min.js"></script>
+</body>
+</html>
