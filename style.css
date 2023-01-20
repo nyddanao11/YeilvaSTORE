@@ -361,7 +361,7 @@ margin-bottom: 0px;
 .content a{
   text-decoration: none;
 }
-.gallery-1, .gallery-2, .gallery-3{
+.gallery-1, .gallery-2, .gallery-3, .gallery-4{
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -476,10 +476,10 @@ margin-bottom: 0px;
     display: flex;
     flex-wrap: wrap;
   }
-  .gallery-1, .gallery-2, .gallery-3 {
+  .gallery-1, .gallery-2, .gallery-3, .gallery-4 {
     width: 50%;
   }
-  .gallery-1 img, .gallery-2 img, .gallery-3 {
+  .gallery-1 img, .gallery-2 img, .gallery-3 img, .gallery-4 img {
     width: 100%;
   }
 }
