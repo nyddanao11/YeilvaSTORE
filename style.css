@@ -361,7 +361,7 @@ margin-bottom: 0px;
 .content a{
   text-decoration: none;
 }
-.gallery{
+.gallery-1, .gallery-2, .gallery-3{
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -471,6 +471,18 @@ margin-bottom: 0px;
   }
 }
 
+@media (max-width: 600px) {
+  .product-cards {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .gallery-1, .gallery-2, .gallery-3 {
+    width: 50%;
+  }
+  .gallery-1 img, .gallery-2 img, .gallery-3 {
+    width: 100%;
+  }
+}
 
 
 
