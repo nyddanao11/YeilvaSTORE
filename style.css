@@ -260,6 +260,49 @@ position: relative;
     }
    
 
+
+   .scroll{
+  display: grid;
+
+
+}
+.media-scroller{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 25%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  gap:2px; 
+  padding:0 2px 2px;
+  scroll-snap-type: x mandatory; 
+  scroll-snap-align: center;
+  scroll-padding: 5px;
+}
+
+ .media-scroller img{
+
+  scroll-snap-align: start;
+}
+
+}
+.media-element{
+  display: grid;
+  gap: 2px;
+  grid-template-rows: min-content;
+ padding:2px;
+ background:#05981d;
+ border-radius: 3px;
+ box-shadow: 5px 5px 5px #ccc;
+
+}
+.media-element img {
+  inline-size: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+
+}
+
+
 .featured h1{
   display: flex;
   align-items: center;
