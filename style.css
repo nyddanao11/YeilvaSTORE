@@ -263,6 +263,7 @@ position: relative;
 
    .scroll{
   display: grid;
+  margin-top: 25px;
 
 
 }
