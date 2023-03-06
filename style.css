@@ -303,6 +303,61 @@ position: relative;
 
 }
 
+.add-on{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+}
+.cloth-on{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+.clothing-1{
+  width: 110px;
+  letter-spacing: 2px;
+  text-align: center;
+  background: black;
+  color: white;
+  font-size: 25px;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.clothing-2{
+  width: 110px;
+  text-align: center;
+  letter-spacing: 2px;
+  background: red;
+  color: white;
+  font-size: 25px;
+  padding: 5px;
+  text-decoration: none;
+}
+.clothing-3{
+  width: 110px;
+  text-align: center;
+  letter-spacing: 4px;
+  background: brown;
+  color: white;
+  font-size: 25px;
+  padding: 5px;
+  text-decoration: none;
+}
+
+@media(max-width:740px){
+  .add-on{
+    box-sizing: border-box;
+    margin-left:2px;
+    margin-right: 5px;
+  }
+
+}
+
+
 
 .featured h1{
   display: flex;
