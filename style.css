@@ -303,6 +303,7 @@ position: relative;
 
 }
 
+
 .add-on{
   display: flex;
   align-items: center;
@@ -314,6 +315,7 @@ position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 15px;
   margin-bottom: 15px;
 }
 .clothing-1{
