@@ -142,6 +142,57 @@ header{
 .total-price{
 	margin-left: 0.5rem;
 }
+.sign-Up{
+	display: flex;
+	gap: 5px;
+  align-items: center;
+	justify-content: center;
+}
+
+
+.btn-signout{
+	display: flex;
+	margin: 7px auto 15px auto;
+	padding: 10px 15px;
+	border: none;
+	background:var(--main-color);
+	color: var(--bg-color);
+	font-size: 0.75rem;
+	font-weight: 500;
+	cursor: pointer;
+
+}
+.btn-signout:hover{
+	background: var(--text-color);
+}
+
+.btn-signup{
+	
+	display: flex;
+	margin: 7px auto 15px auto;
+	padding: 10px 15px;
+	border: none;
+	background: #05e699;
+	color: var(--bg-color);
+	font-size: 0.75rem;
+	font-weight: 500;
+	cursor: pointer;	
+
+}
+.btn-signup:hover{
+	background: black;
+	color: white;
+}
+
+#sign-up-btn{
+	display:block;
+}
+#sign-out-btn{
+	display: none;
+}
+.signed{
+	text-decoration: none;
+}
 .btn-buy{
 	display: flex;
 	margin: 1.5rem auto 0 auto;
@@ -169,6 +220,7 @@ header{
 	font-weight: 600;
 	text-align: center;
 	margin-bottom: 1.5rem;
+	border-bottom: 1px solid ;
 }
 .shop{
 	margin-top:2rem;

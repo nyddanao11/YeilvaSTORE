@@ -94,30 +94,35 @@ function quantityChanged(event) {
 }
 
 
-function addCartClicked(event){
-    const button = event.target;
+    function addCartClicked(e){
+    const button = e.target;
     const shopProducts = button.parentElement;
     const title = shopProducts.getElementsByClassName("product-title")[0].textContent;
-     const price = shopProducts.getElementsByClassName("price")[0].textContent;
-     const productImg = shopProducts.getElementsByClassName("product-img")[0].src;
-     addProductToCart(title, price, productImg);
-     updatetotal();
-}
-    
+    const price = shopProducts.getElementsByClassName("price")[0].textContent;
+    const productImg = shopProducts.getElementsByClassName("product-img")[0].src;
 
- function addProductToCart(title, price, productImg){
+    var colorSelect = shopProducts.querySelector("#color-select");
+    var sizeSelect = shopProducts.querySelector("#size-select");
+    var itemSelect = shopProducts.querySelector("#item-select");
+    var color = colorSelect.options[colorSelect.selectedIndex].value;
+    var size = sizeSelect.options[sizeSelect.selectedIndex].value;
+    var item = itemSelect.options[itemSelect.selectedIndex].value;
+
+    addProductToCart(title, price, productImg, color, size, item);
+    updatetotal();
+}
+
+
+
+ function addProductToCart(title, price, productImg, color, size, item){
     var cartShopBox = document.createElement("div");
     cartShopBox.classList.add("cart-box");
     var cartItems = document.getElementsByClassName("cart-content")[0];
     var cartItemsNames = cartItems.getElementsByClassName("cart-product-title");
 
-    var colorSelect = document.getElementById("color-select");
-    var sizeSelect = document.getElementById("size-select");
-    var color = colorSelect.options[colorSelect.selectedIndex].value;
-    var size = sizeSelect.options[sizeSelect.selectedIndex].value;
 
     for(var i = 0; i < cartItemsNames.length; i++){
-        if(cartItemsNames[i].innerText == title && cartItemsNames[i].getAttribute("data-color") == color && cartItemsNames[i].getAttribute("data-size") == size){
+        if(cartItemsNames[i].innerText == title && cartItemsNames[i].getAttribute("data-color") == color && cartItemsNames[i].getAttribute("data-size") == size && cartItemsNames[i].getAttribute("data-item") == item){
             alert("You have already added this item to cart");
             return;
         }
@@ -129,8 +134,8 @@ function addCartClicked(event){
             <div class="cart-product-title" data-color="${color}" data-size="${size}">${title}</div>
             <div class="cart-price">${price}</div>
             <div>Color: ${color}</div>
-
             <div>Size: ${size}</div>
+            <div>Item: ${item}</div>
             <input type="number" value="1" class="cart-quantity">
         </div>
         <i class='bx bxs-trash-alt cart-remove'></i>
@@ -143,43 +148,138 @@ function addCartClicked(event){
 }
 
 
-// function addProductToCart(title, price, productImg){
-//     const cartShopBox = document.createElement("div");
-//     cartShopBox.classList.add("cart-box");
-//     const cartItems = document.getElementsByClassName("cart-content")[0];
-//     const cartItemsNames = cartItems.getElementsByClassName("cart-product-title");
-//     for(let i = 0; i < cartItemsNames.length; i++){
-//         if (cartItemsNames[i].textContent === title ){
-//          alert("You have already add this item to cart");
-//         return;   
-//     }
+function signUp() {
+    let username = document.getElementById('username').value;
+    let password = document.getElementById('password').value;
+    let name = document.getElementById('name').value;
+  let email = document.getElementById('email').value;
+  let address = document.getElementById('address').value;
+  let city= document.getElementById('city').value;
+  let province = document.getElementById('province').value;
+  let zip= document.getElementById('zip').value;
+  let phone = document.getElementById('phone').value;
   
+    
+    if (localStorage.getItem(username) !== null) {
+        alert('Username already exists!');
+        return;
+    }else{
+    
+     localStorage.setItem(username, JSON.stringify({
+       "password": password,
+       "name": name,
+       "email": email,
+       "address": address,
+       "city": city,
+       "province": province,
+       "zip": zip,
+       "phone": phone
+     }));
+    alert('Sign up successful!');
+    displayUsername();
+ }
+}
 
-//   }
+function displayUsername() {
+  const usernameDisplay = document.getElementById('usernameDisplay');
+  const username = getUsername();
+  if (username !== null) {
+    usernameDisplay.textContent = `Logged in as: ${username}`;
+  }
+  removesignupbtn();
+  // displaysignoutbtn();
+
+}
+
+function removesignupbtn() {
+  const username = getUsername();
+  const signupButton = document.querySelector("#sign-up-btn");
+  const signoutButton = document.querySelector("#sign-out-btn");
+
+  if (username !== null) {
+    // user is signed in
+    signupButton.style.display = "none";
+    signoutButton.style.display = "block";
+  } else {
+    // user is not signed in
+    signupButton.style.display = "block";
+    signoutButton.style.display = "none";
+  }
+}
 
 
-// let cartBoxContent = ` 
-//                         <img src="${productImg}" alt="" class="cart-img">      
-//                          <div class="detail-box">
-//                            <div class="cart-product-title">${title}</div>
-//                             <div class="cart-price">${price}</div>
 
-//                              <input type="number" value="1" class="cart-quantity">
-//                          </div>
-//                             <i class='bx bxs-trash-alt cart-remove'></i>
-//                             `;
-                         
+function getUsername() {
+  let signedInUser = null;
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    const value = JSON.parse(localStorage.getItem(key));
+    if (key !== 'cart' && value.password !== undefined) {
+      signedInUser = key;
+      break;
+    }
+  }
+  return signedInUser;
+}
 
-// cartShopBox.innerHTML = cartBoxContent;
-// cartItems.append(cartShopBox);
-// cartShopBox
-// .getElementsByClassName("cart-remove")[0]
-// .addEventListener("click", removeCartItem);
-// cartShopBox
-// .getElementsByClassName("cart-quantity")[0]
-// .addEventListener("change", quantityChanged);
+// Display the signed-up user's username when the page loads
+window.onload = displayUsername;
 
-// }
+// localStorage.clear();
+
+
+
+function sendCheckoutConfirmation() {
+  // Get user information from local storage
+  const user = JSON.parse(localStorage.getItem('user')) || {};
+  const { username, email, address, city, province, zip, phone } = user;
+
+  // Get cart items from local storage
+  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Compose email body
+  let body = `Checkout Confirmation\n\n`;
+  body += `User Information:\n`;
+  body += `Username: ${username}\n`;
+  body += `Email: ${email}\n`;
+  body += `Address: ${address}\n`;
+  body += `City: ${city}\n`;
+  body += `Province: ${province}\n`;
+  body += `Zip: ${zip}\n`;
+  body += `Phone: ${phone}\n\n`;
+  body += `Cart Information:\n`;
+  body += `Item\tPrice\tQuantity\tSize\tColor\n`;
+  for (let item of cartItems) {
+    body += `${item.name}\t${item.price}\t${item.quantity}\t${item.size}\t${item.color}\n`;
+  }
+
+  // Create the mailto link with the email body
+  const mailtoLink = `mailto:nandingazure@gmail.com?subject=Checkout Confirmation&body=${encodeURIComponent(body)}`;
+
+  // Open the default email client with the mailto link
+  window.open(mailtoLink);
+
+  // Remove cart items from local storage after checkout confirmation is sent
+  localStorage.removeItem('cart');
+}
+
+
+
+
+// sign out function
+function signOut() {
+  // clear the user's session data
+  localStorage.removeItem("username");
+  // redirect to homepage
+  window.location.href = "index.html";
+}
+
+// add event listener to sign out button
+document.getElementById("sign-out-btn").addEventListener("click", signOut);
+
+// call checkLoggedIn() on page load
+  // removesignupbtn();
+
 
 
 function updatetotal(){
