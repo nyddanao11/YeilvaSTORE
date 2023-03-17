@@ -29,13 +29,22 @@
 					<div class="total-title">Total</div>
 					<div class="total-price">₱0</div>
 				</div>
-				<button type="button" class="btn-buy">Buy Now</button>
+					<button type="button" class="btn-buy" id="buy-now" onclick="sendCheckoutConfirmation()">Buy Now</button>
 				<i class='bx bx-x' id="close-cart"></i>
 			</div>
 		</div>
 	</header>
 	
 	<section class="shop container">
+
+		<div class="sign-Up">
+
+			<span id="usernameDisplay">Hello!</span>
+
+		<div id="sign-up-btn"><a href="C:\Users\bonif\Desktop\web projects\signup01.html" class="btn-signup" onclick="displayUsername()" class="signed">Sign Up</a></div>
+		<div id="sign-out-btn"><button class="btn-signout" onclick="signOut()">Sign Out</button></div>
+	</div>
+
 		<div class="section-title">Lee Men</div>
 		<div class="shop-content">
 			<div class="product-box">
@@ -63,6 +72,15 @@
           					<option value="medium">Medium</option>
           					<option value="large">Large</option>
          					 <option value="extralarge">XLarge</option>
+       					 </select>
+     			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
        					 </select>
      			 </div>
    				 </div> 
@@ -100,6 +118,15 @@
          					 <option value="extralarge">XLarge</option>
        					 </select>
      			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
+       					 </select>
+     			 </div>
    				 </div> 
 
    
@@ -135,6 +162,15 @@
          					 <option value="extralarge">XLarge</option>
        					 </select>
      			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
+       					 </select>
+     			 </div>
    				 </div>
 
 			  <i class='bx bxs-shopping-bag add-cart' ></i>	
@@ -166,6 +202,15 @@
           					<option value="medium">Medium</option>
           					<option value="large">Large</option>
          					 <option value="extralarge">XLarge</option>
+       					 </select>
+     			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
        					 </select>
      			 </div>
    				 </div> 
@@ -200,6 +245,15 @@
           					<option value="medium">Medium</option>
           					<option value="large">Large</option>
          					 <option value="extralarge">XLarge</option>
+       					 </select>
+     			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
        					 </select>
      			 </div>
    				 </div> 
@@ -237,6 +291,15 @@
          					 <option value="extralarge">XLarge</option>
        					 </select>
      			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
+       					 </select>
+     			 </div>
    				 </div> 
 
    
@@ -269,6 +332,15 @@
           					<option value="medium">Medium</option>
           					<option value="large">Large</option>
          					 <option value="extralarge">XLarge</option>
+       					 </select>
+     			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
        					 </select>
      			 </div>
    				 </div> 
@@ -305,6 +377,15 @@
          					 <option value="extralarge">XLarge</option>
        					 </select>
      			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
+       					 </select>
+     			 </div>
    				 </div> 
 
    
@@ -337,6 +418,15 @@
           					<option value="medium">Medium</option>
           					<option value="large">Large</option>
          					 <option value="extralarge">XLarge</option>
+       					 </select>
+     			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
        					 </select>
      			 </div>
    				 </div> 
@@ -373,6 +463,15 @@
          					 <option value="extralarge">XLarge</option>
        					 </select>
      			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
+       					 </select>
+     			 </div>
    				 </div> 
 
    
@@ -405,6 +504,15 @@
           					<option value="medium">Medium</option>
           					<option value="large">Large</option>
          					 <option value="extralarge">XLarge</option>
+       					 </select>
+     			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
        					 </select>
      			 </div>
    				 </div> 
@@ -440,6 +548,15 @@
          					 <option value="extralarge">XLarge</option>
        					 </select>
      			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
+       					 </select>
+     			 </div>
    				 </div> 
 
    
@@ -471,6 +588,15 @@
           					<option value="medium">Medium</option>
           					<option value="large">Large</option>
          					 <option value="extralarge">XLarge</option>
+       					 </select>
+     			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
        					 </select>
      			 </div>
    				 </div> 
@@ -507,6 +633,15 @@
          					 <option value="extralarge">XLarge</option>
        					 </select>
      			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
+       					 </select>
+     			 </div>
    				 </div> 
 
    
@@ -538,6 +673,15 @@
           					<option value="medium">Medium</option>
           					<option value="large">Large</option>
          					 <option value="extralarge">XLarge</option>
+       					 </select>
+     			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
        					 </select>
      			 </div>
    				 </div> 
@@ -573,6 +717,15 @@
          					 <option value="extralarge">XLarge</option>
        					 </select>
      			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
+       					 </select>
+     			 </div>
    				 </div> 
 
    
@@ -606,6 +759,15 @@
          					 <option value="extralarge">XLarge</option>
        					 </select>
      			  </div>
+
+     			   <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
+       					 </select>
+     			 </div>
    				 </div> 
    
 			  <i class='bx bxs-shopping-bag add-cart' ></i>	
@@ -647,6 +809,15 @@
          					 <option value="extralarge">XLarge</option>
        					 </select>
      			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
+       					 </select>
+     			 </div>
    				 </div>
 
 			  <i class='bx bxs-shopping-bag add-cart' ></i>	
@@ -677,6 +848,15 @@
           					<option value="medium">Medium</option>
           					<option value="large">Large</option>
          					 <option value="extralarge">XLarge</option>
+       					 </select>
+     			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
        					 </select>
      			 </div>
    				 </div>
@@ -711,6 +891,15 @@
          					 <option value="extralarge">XLarge</option>
        					 </select>
      			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
+       					 </select>
+     			 </div>
    				 </div>
 
 			  <i class='bx bxs-shopping-bag add-cart' ></i>	
@@ -741,6 +930,15 @@
           					<option value="medium">Medium</option>
           					<option value="large">Large</option>
          					 <option value="extralarge">XLarge</option>
+       					 </select>
+     			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
        					 </select>
      			 </div>
    				 </div>
@@ -776,6 +974,15 @@
          					 <option value="extralarge">XLarge</option>
        					 </select>
      			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
+       					 </select>
+     			 </div>
    				 </div>
 
 			  <i class='bx bxs-shopping-bag add-cart' ></i>	
@@ -807,6 +1014,15 @@
           					<option value="medium">Medium</option>
           					<option value="large">Large</option>
          					 <option value="extralarge">XLarge</option>
+       					 </select>
+     			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
        					 </select>
      			 </div>
    				 </div>
@@ -842,6 +1058,15 @@
          					 <option value="extralarge">XLarge</option>
        					 </select>
      			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
+       					 </select>
+     			 </div>
    				 </div>
 
 			  <i class='bx bxs-shopping-bag add-cart' ></i>	
@@ -873,6 +1098,15 @@
           					<option value="medium">Medium</option>
           					<option value="large">Large</option>
          					 <option value="extralarge">XLarge</option>
+       					 </select>
+     			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
        					 </select>
      			 </div>
    				 </div>
@@ -908,6 +1142,15 @@
          					 <option value="extralarge">XLarge</option>
        					 </select>
      			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
+       					 </select>
+     			 </div>
    				 </div>
 
 			  <i class='bx bxs-shopping-bag add-cart' ></i>	
@@ -939,6 +1182,15 @@
           					<option value="medium">Medium</option>
           					<option value="large">Large</option>
          					 <option value="extralarge">XLarge</option>
+       					 </select>
+     			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
        					 </select>
      			 </div>
    				 </div>
@@ -974,6 +1226,15 @@
          					 <option value="extralarge">XLarge</option>
        					 </select>
      			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
+       					 </select>
+     			 </div>
    				 </div>
 
 			  <i class='bx bxs-shopping-bag add-cart' ></i>	
@@ -1005,6 +1266,15 @@
           					<option value="medium">Medium</option>
           					<option value="large">Large</option>
          					 <option value="extralarge">XLarge</option>
+       					 </select>
+     			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
        					 </select>
      			 </div>
    				 </div>
@@ -1040,6 +1310,15 @@
          					 <option value="extralarge">XLarge</option>
        					 </select>
      			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
+       					 </select>
+     			 </div>
    				 </div>
 
 			  <i class='bx bxs-shopping-bag add-cart' ></i>	
@@ -1071,6 +1350,15 @@
           					<option value="medium">Medium</option>
           					<option value="large">Large</option>
          					 <option value="extralarge">XLarge</option>
+       					 </select>
+     			 </div>
+
+     			  <div class="cart-item">
+       				 <label for="item-select">Item:</label>
+        				<select name="item-select" id="item-select">
+         					 <option value="SN:6T139151-FY">SN:6T139151-FY</option>
+          					<option value="SN:6T139151-U4">SN:6T139151-U4</option>
+          					<option value="SN:6T139151-01">SN:6T139151-01</option>
        					 </select>
      			 </div>
    				 </div>
