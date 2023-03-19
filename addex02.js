@@ -115,6 +115,7 @@ function quantityChanged(event) {
 
 
 
+
  function addProductToCart(title, price, productImg, color, size, item){
     var cartShopBox = document.createElement("div");
     cartShopBox.classList.add("cart-box");
@@ -127,7 +128,6 @@ function quantityChanged(event) {
             alert("You have already added this item to cart");
             return;
         }
-
 
 
   // Create cart item object
@@ -157,10 +157,6 @@ function quantityChanged(event) {
   // Save cart items to local storage
   localStorage.setItem('cart', JSON.stringify(cartItems));
 
-
-
-
-
     }
 
 
@@ -184,37 +180,7 @@ function quantityChanged(event) {
 }
 
 
-// function signUp() {
-//     let username = document.getElementById('username').value;
-//     let password = document.getElementById('password').value;
-//     let name = document.getElementById('name').value;
-//   let email = document.getElementById('email').value;
-//   let address = document.getElementById('address').value;
-//   let city= document.getElementById('city').value;
-//   let province = document.getElementById('province').value;
-//   let zip= document.getElementById('zip').value;
-//   let phone = document.getElementById('phone').value;
-  
-    
-//     if (localStorage.getItem(username) !== null) {
-//         alert('Username already exists!');
-//         return;
-//     }else{
-    
-//      localStorage.setItem(username, JSON.stringify({
-//        "password": password,
-//        "name": name,
-//        "email": email,
-//        "address": address,
-//        "city": city,
-//        "province": province,
-//        "zip": zip,
-//        "phone": phone
-//      }));
-//     alert('Sign up successful!');
-//     displayUsername();
-//  }
-// }
+
 
 function displayUsername() {
   const usernameDisplay = document.getElementById('usernameDisplay');
@@ -265,7 +231,6 @@ window.onload = displayUsername;
 
 
 function sendCheckoutConfirmation() {
-  
   // Get user information from local storage
   const user = JSON.parse(localStorage.getItem('user')) || {};
   const { username, name, email, address, city, province, zip, phone } = user;
@@ -276,9 +241,10 @@ function sendCheckoutConfirmation() {
   // Calculate total price
   let totalPrice = 0;
   for (let item of cartItems) {
-    totalPrice += item.price * item.quantity;
+    totalPrice += parseFloat(item.price) * item.quantity;
   }
 
+  
   // Compose email body
   let body = `Checkout Confirmation\n\n`;
   body += `User Information:\n`;
@@ -291,7 +257,7 @@ function sendCheckoutConfirmation() {
   body += `Zip: ${zip}\n`;
   body += `Phone: ${phone}\n\n`;
   body += `Cart Information:\n`;
-  body += `Item\tPrice\tQuantity\tSize\tColor\n`;
+  body += `Item\t\tPrice\tQuantity\tSize\tColor\n`;
   for (let item of cartItems) {
     body += `${item.title}\t${item.price}\t${item.quantity}\t${item.size}\t${item.color}\n`;
   }
@@ -306,6 +272,7 @@ function sendCheckoutConfirmation() {
   // Remove cart items from local storage after checkout confirmation is sent
   localStorage.removeItem('cart');
 }
+
 
 
 
