@@ -69,6 +69,7 @@ function buyButtonClicked(){
     while (cartContent.hasChildNodes()){
         cartContent.removeChild(cartContent.firstChild);
     }
+   
     updatetotal();
 }
 
@@ -126,7 +127,42 @@ function quantityChanged(event) {
             alert("You have already added this item to cart");
             return;
         }
+
+
+
+  // Create cart item object
+  const cartItem = {
+    title: title,
+    price: price,
+    productImg: productImg,
+    color: color,
+    size: size,
+    item: item,
+    quantity: 1
+  };
+
+  // Get cart items from local storage
+  let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Check if the added item already exists in the cart
+  let itemIndex = cartItems.findIndex(cartItem => cartItem.title === title && cartItem.price === price && cartItem.productImg === productImg && cartItem.size === size && cartItem.color === color && cartItem.item === item);
+
+  // If the item exists in the cart, increase its quantity by 1
+  if (itemIndex !== -1) {
+    cartItems[itemIndex].quantity += 1;
+  } else { // Otherwise, add the item to the cart
+    cartItems.push(cartItem);
+  }
+
+  // Save cart items to local storage
+  localStorage.setItem('cart', JSON.stringify(cartItems));
+
+
+
+
+
     }
+
 
     var cartBoxContent = ` 
         <img src="${productImg}" alt="" class="cart-img">      
@@ -148,37 +184,37 @@ function quantityChanged(event) {
 }
 
 
-function signUp() {
-    let username = document.getElementById('username').value;
-    let password = document.getElementById('password').value;
-    let name = document.getElementById('name').value;
-  let email = document.getElementById('email').value;
-  let address = document.getElementById('address').value;
-  let city= document.getElementById('city').value;
-  let province = document.getElementById('province').value;
-  let zip= document.getElementById('zip').value;
-  let phone = document.getElementById('phone').value;
+// function signUp() {
+//     let username = document.getElementById('username').value;
+//     let password = document.getElementById('password').value;
+//     let name = document.getElementById('name').value;
+//   let email = document.getElementById('email').value;
+//   let address = document.getElementById('address').value;
+//   let city= document.getElementById('city').value;
+//   let province = document.getElementById('province').value;
+//   let zip= document.getElementById('zip').value;
+//   let phone = document.getElementById('phone').value;
   
     
-    if (localStorage.getItem(username) !== null) {
-        alert('Username already exists!');
-        return;
-    }else{
+//     if (localStorage.getItem(username) !== null) {
+//         alert('Username already exists!');
+//         return;
+//     }else{
     
-     localStorage.setItem(username, JSON.stringify({
-       "password": password,
-       "name": name,
-       "email": email,
-       "address": address,
-       "city": city,
-       "province": province,
-       "zip": zip,
-       "phone": phone
-     }));
-    alert('Sign up successful!');
-    displayUsername();
- }
-}
+//      localStorage.setItem(username, JSON.stringify({
+//        "password": password,
+//        "name": name,
+//        "email": email,
+//        "address": address,
+//        "city": city,
+//        "province": province,
+//        "zip": zip,
+//        "phone": phone
+//      }));
+//     alert('Sign up successful!');
+//     displayUsername();
+//  }
+// }
 
 function displayUsername() {
   const usernameDisplay = document.getElementById('usernameDisplay');
@@ -187,7 +223,7 @@ function displayUsername() {
     usernameDisplay.textContent = `Logged in as: ${username}`;
   }
   removesignupbtn();
-  // displaysignoutbtn();
+
 
 }
 
@@ -228,20 +264,27 @@ window.onload = displayUsername;
 // localStorage.clear();
 
 
-
 function sendCheckoutConfirmation() {
+  
   // Get user information from local storage
   const user = JSON.parse(localStorage.getItem('user')) || {};
-  const { username, email, address, city, province, zip, phone } = user;
+  const { username, name, email, address, city, province, zip, phone } = user;
 
   // Get cart items from local storage
   const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Calculate total price
+  let totalPrice = 0;
+  for (let item of cartItems) {
+    totalPrice += item.price * item.quantity;
+  }
 
   // Compose email body
   let body = `Checkout Confirmation\n\n`;
   body += `User Information:\n`;
   body += `Username: ${username}\n`;
   body += `Email: ${email}\n`;
+  body += `Name: ${name}\n`;
   body += `Address: ${address}\n`;
   body += `City: ${city}\n`;
   body += `Province: ${province}\n`;
@@ -250,8 +293,9 @@ function sendCheckoutConfirmation() {
   body += `Cart Information:\n`;
   body += `Item\tPrice\tQuantity\tSize\tColor\n`;
   for (let item of cartItems) {
-    body += `${item.name}\t${item.price}\t${item.quantity}\t${item.size}\t${item.color}\n`;
+    body += `${item.title}\t${item.price}\t${item.quantity}\t${item.size}\t${item.color}\n`;
   }
+  body += `Total Price: ${totalPrice}\n`;
 
   // Create the mailto link with the email body
   const mailtoLink = `mailto:nandingazure@gmail.com?subject=Checkout Confirmation&body=${encodeURIComponent(body)}`;
