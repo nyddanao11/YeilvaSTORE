@@ -86,6 +86,8 @@ header{
 }
 .cart.active {
 	right: 0%;
+	overflow-y: scroll;
+	max-height: 300px;
 }
 .cart-title{
 	text-align: center;
