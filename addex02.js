@@ -261,7 +261,7 @@ function sendCheckoutConfirmation() {
   for (let item of cartItems) {
     body += `${item.title}\t${item.price}\t${item.quantity}\t${item.size}\t${item.color}\n`;
   }
-  body += `Total Price: ${totalPrice}\n`;
+  body += `Total Price: ₱${totalPrice}\n`;
 
   // Create the mailto link with the email body
   const mailtoLink = `mailto:nandingazure@gmail.com?subject=Checkout Confirmation&body=${encodeURIComponent(body)}`;
