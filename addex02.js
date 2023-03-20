@@ -95,92 +95,102 @@ function quantityChanged(event) {
 }
 
 
-    function addCartClicked(e){
-    const button = e.target;
-    const shopProducts = button.parentElement;
-    const title = shopProducts.getElementsByClassName("product-title")[0].textContent;
-    const price = shopProducts.getElementsByClassName("price")[0].textContent;
-    const productImg = shopProducts.getElementsByClassName("product-img")[0].src;
+function addCartClicked(e) {
+  const button = e.target;
+  const shopProducts = button.parentElement;
+  const title = shopProducts.querySelector('.product-title').textContent;
+  const price = shopProducts.querySelector('.price').textContent;
+  const productImg = shopProducts.querySelector('.product-img').src;
 
-    var colorSelect = shopProducts.querySelector("#color-select");
-    var sizeSelect = shopProducts.querySelector("#size-select");
-    var itemSelect = shopProducts.querySelector("#item-select");
-    var color = colorSelect.options[colorSelect.selectedIndex].value;
-    var size = sizeSelect.options[sizeSelect.selectedIndex].value;
-    var item = itemSelect.options[itemSelect.selectedIndex].value;
+  const colorSelect = shopProducts.querySelector('#color-select');
+  const sizeSelect = shopProducts.querySelector('#size-select');
+  const itemSelect = shopProducts.querySelector('#item-select');
+  const color = colorSelect.options[colorSelect.selectedIndex].value;
+  const size = sizeSelect.options[sizeSelect.selectedIndex].value;
+  const item = itemSelect.options[itemSelect.selectedIndex].value;
 
-    addProductToCart(title, price, productImg, color, size, item);
-    updatetotal();
+  addProductToCart(title, price, productImg, color, size, item);
+  updatetotal();
 }
 
+function addProductToCart(title, price, productImg, color, size, item) {
+  const cartShopBox = document.createElement('div');
+  cartShopBox.classList.add('cart-box');
+  const cartItems = document.querySelector('.cart-content');
+  const cartItemsNames = cartItems.querySelectorAll('.cart-product-title');
 
-
-
- function addProductToCart(title, price, productImg, color, size, item){
-    var cartShopBox = document.createElement("div");
-    cartShopBox.classList.add("cart-box");
-    var cartItems = document.getElementsByClassName("cart-content")[0];
-    var cartItemsNames = cartItems.getElementsByClassName("cart-product-title");
-
-
-    for(var i = 0; i < cartItemsNames.length; i++){
-        if(cartItemsNames[i].innerText == title && cartItemsNames[i].getAttribute("data-color") == color && cartItemsNames[i].getAttribute("data-size") == size && cartItemsNames[i].getAttribute("data-item") == item){
-            alert("You have already added this item to cart");
-            return;
-        }
-
+  for (let i = 0; i < cartItemsNames.length; i++) {
+    if (
+      cartItemsNames[i].innerText === title &&
+      cartItemsNames[i].getAttribute('data-color') === color &&
+      cartItemsNames[i].getAttribute('data-size') === size &&
+      cartItemsNames[i].getAttribute('data-item') === item
+    ) {
+      alert('You have already added this item to cart');
+      return;
+    }
+  }
 
   // Create cart item object
   const cartItem = {
-    title: title,
-    price: price,
-    productImg: productImg,
-    color: color,
-    size: size,
-    item: item,
-    quantity: 1
+    title,
+    price,
+    productImg,
+    color,
+    size,
+    item,
+    quantity: 1,
   };
 
   // Get cart items from local storage
-  let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+  let cartItemsList = JSON.parse(localStorage.getItem('cart')) || [];
 
   // Check if the added item already exists in the cart
-  let itemIndex = cartItems.findIndex(cartItem => cartItem.title === title && cartItem.price === price && cartItem.productImg === productImg && cartItem.size === size && cartItem.color === color && cartItem.item === item);
+  const itemIndex = cartItemsList.findIndex(
+    (item) =>
+      item.title === title &&
+      item.price === price &&
+      item.productImg === productImg &&
+      item.size === size &&
+      item.color === color &&
+      item.item === item
+  );
 
   // If the item exists in the cart, increase its quantity by 1
   if (itemIndex !== -1) {
-    cartItems[itemIndex].quantity += 1;
-  } else { // Otherwise, add the item to the cart
-    cartItems.push(cartItem);
+    cartItemsList[itemIndex].quantity += 1;
+  } else {
+    // Otherwise, add the item to the cart
+    cartItemsList.push(cartItem);
   }
 
   // Save cart items to local storage
-  localStorage.setItem('cart', JSON.stringify(cartItems));
+  localStorage.setItem('cart', JSON.stringify(cartItemsList));
 
-    }
+  const cartBoxContent = `
+    <img src="${productImg}" alt="" class="cart-img">
+    <div class="detail-box">
+      <div class="cart-product-title" data-color="${color}" data-size="${size}">
+        ${title}
+      </div>
+      <div class="cart-price">${price}</div>
+      <div>Color: ${color}</div>
+      <div>Size: ${size}</div>
+      <div>Item: ${item}</div>
+      <input type="number" value="1" class="cart-quantity">
+    </div>
+    <i class='bx bxs-trash-alt cart-remove'></i>
+  `;
 
-
-    var cartBoxContent = ` 
-        <img src="${productImg}" alt="" class="cart-img">      
-        <div class="detail-box">
-            <div class="cart-product-title" data-color="${color}" data-size="${size}">${title}</div>
-            <div class="cart-price">${price}</div>
-            <div>Color: ${color}</div>
-            <div>Size: ${size}</div>
-            <div>Item: ${item}</div>
-            <input type="number" value="1" class="cart-quantity">
-        </div>
-        <i class='bx bxs-trash-alt cart-remove'></i>
-    `;
-    cartShopBox.innerHTML = cartBoxContent;
-    cartItems.append(cartShopBox);
-    cartShopBox.getElementsByClassName("cart-remove")[0].addEventListener("click", removeCartItem);
-    cartShopBox.getElementsByClassName("cart-quantity")[0].addEventListener("change", quantityChanged);
-    updatetotal();
+  cartShopBox.innerHTML = cartBoxContent;
+  cartItems.appendChild(cartShopBox);
+  cartShopBox.querySelector('.cart-remove').addEventListener('click', removeCartItem);
+  cartShopBox.querySelector('.cart-quantity').addEventListener('change', quantityChanged);
+  updatetotal();
 }
 
 
-
+"use strict";
 
 function displayUsername() {
   const usernameDisplay = document.getElementById('usernameDisplay');
@@ -188,28 +198,24 @@ function displayUsername() {
   if (username !== null) {
     usernameDisplay.textContent = `Logged in as: ${username}`;
   }
-  removesignupbtn();
-
-
+  hideSignUpButton();
 }
 
-function removesignupbtn() {
+function hideSignUpButton() {
   const username = getUsername();
-  const signupButton = document.querySelector("#sign-up-btn");
-  const signoutButton = document.querySelector("#sign-out-btn");
+  const signUpButton = document.querySelector("#sign-up-btn");
+  const signOutButton = document.querySelector("#sign-out-btn");
 
   if (username !== null) {
     // user is signed in
-    signupButton.style.display = "none";
-    signoutButton.style.display = "block";
+    signUpButton.style.display = "none";
+    signOutButton.style.display = "block";
   } else {
     // user is not signed in
-    signupButton.style.display = "block";
-    signoutButton.style.display = "none";
+    signUpButton.style.display = "block";
+    signOutButton.style.display = "none";
   }
 }
-
-
 
 function getUsername() {
   let signedInUser = null;
@@ -224,10 +230,11 @@ function getUsername() {
   return signedInUser;
 }
 
-// Display the signed-up user's username when the page loads
 window.onload = displayUsername;
 
-// localStorage.clear();
+
+
+ // localStorage.clear();
 
 
 function sendCheckoutConfirmation() {
@@ -259,12 +266,12 @@ function sendCheckoutConfirmation() {
   body += `Cart Information:\n`;
   body += `Item\t\tPrice\tQuantity\tSize\tColor\n`;
   for (let item of cartItems) {
-    body += `${item.title}\t${item.price}\t${item.quantity}\t${item.size}\t${item.color}\n`;
+    body += `${item.title}\t${item.price}\t\t${item.quantity}\t${item.size}\t${item.color}\n`;
   }
   body += `Total Price: ₱${totalPrice}\n`;
 
   // Create the mailto link with the email body
-  const mailtoLink = `mailto:nandingazure@gmail.com?subject=Checkout Confirmation&body=${encodeURIComponent(body)}`;
+  const mailtoLink = `mailto:yeilvastore@gmail.com?subject=Checkout Confirmation&body=${encodeURIComponent(body)}`;
 
   // Open the default email client with the mailto link
   window.open(mailtoLink);
