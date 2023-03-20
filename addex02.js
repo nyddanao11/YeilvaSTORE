@@ -282,8 +282,6 @@ function sendCheckoutConfirmation() {
 
 
 
-
-
 // sign out function
 function signOut() {
   // clear the user's session data
