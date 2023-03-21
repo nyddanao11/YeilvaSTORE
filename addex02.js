@@ -64,13 +64,17 @@ function ready() {
 
 
 function buyButtonClicked(){
-    alert("Your Order is placed");
     const cartContent = document.getElementsByClassName("cart-content")[0];
+    if (cartContent.children.length === 0) {
+        alert("Your cart is empty. Please add items to your cart before placing an order.");
+        return;
+    }
     while (cartContent.hasChildNodes()){
         cartContent.removeChild(cartContent.firstChild);
     }
-   
     updatetotal();
+    alert("Your order has been placed.");
+    sendCheckoutConfirmation();
 }
 
 
@@ -242,8 +246,10 @@ function sendCheckoutConfirmation() {
   const user = JSON.parse(localStorage.getItem('user')) || {};
   const { username, name, email, address, city, province, zip, phone } = user;
 
+ 
   // Get cart items from local storage
   const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
 
   // Calculate total price
   let totalPrice = 0;
