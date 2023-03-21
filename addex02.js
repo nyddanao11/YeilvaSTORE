@@ -265,6 +265,7 @@ function sendCheckoutConfirmation() {
 
   // Compose email body
   let body = `Checkout Confirmation\n\n`;
+  body += `<Press Send Email to confirm your Purchase>\n\n`;
   body += `User Information:\n`;
   body += `Username: ${username}\n`;
   body += `Email: ${email}\n`;
@@ -281,7 +282,8 @@ function sendCheckoutConfirmation() {
   }
   body += `Total Price: ₱${totalPrice.toFixed(2)}\n`;
   body += `Shipping Cost: ₱${shippingCost.toFixed(2)}\n`;
-  body += `Grand Total: ₱${grandTotal.toFixed(2)}\n`;
+  body += `Grand Total: ₱${grandTotal.toFixed(2)}\n\n`;
+   body += `<Press Send Email to confirm your Purchase>\n`;
 
   // Create the mailto link with the email body
   const mailtoLink = `mailto:yeilvastore@gmail.com?subject=Checkout Confirmation&body=${encodeURIComponent(body)}`;
