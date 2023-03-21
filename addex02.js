@@ -251,7 +251,12 @@ function sendCheckoutConfirmation() {
     totalPrice += parseFloat(item.price) * item.quantity;
   }
 
-  
+  // Calculate shipping cost
+  const shippingCost = totalPrice * 0.03 + 35;
+
+  // Calculate grand total
+  const grandTotal = totalPrice + shippingCost;
+
   // Compose email body
   let body = `Checkout Confirmation\n\n`;
   body += `User Information:\n`;
@@ -268,7 +273,9 @@ function sendCheckoutConfirmation() {
   for (let item of cartItems) {
     body += `${item.title}\t${item.price}\t\t${item.quantity}\t${item.size}\t${item.color}\n`;
   }
-  body += `Total Price: ₱${totalPrice}\n`;
+  body += `Total Price: ₱${totalPrice.toFixed(2)}\n`;
+  body += `Shipping Cost: ₱${shippingCost.toFixed(2)}\n`;
+  body += `Grand Total: ₱${grandTotal.toFixed(2)}\n`;
 
   // Create the mailto link with the email body
   const mailtoLink = `mailto:yeilvastore@gmail.com?subject=Checkout Confirmation&body=${encodeURIComponent(body)}`;
@@ -279,6 +286,7 @@ function sendCheckoutConfirmation() {
   // Remove cart items from local storage after checkout confirmation is sent
   localStorage.removeItem('cart');
 }
+
 
 
 
