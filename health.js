@@ -63,17 +63,15 @@ function ready() {
 }
 
 
-
 function checkIfUserExists() {
   let userFound = false;
 
   // loop through all keys in local storage
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
-    const value = JSON.parse(localStorage.getItem(key));
 
-    // check if the user object is found and has a password
-    if (value && value.password !== undefined && value.password !== "") {
+    // check if the key starts with "user" (assuming user keys start with "user")
+    if (key.startsWith("user")) {
       userFound = true;
       break;
     }
@@ -88,8 +86,9 @@ function checkIfUserExists() {
   return true;
 }
 
+
+
 function buyButtonClicked(){
-    
     const cartContent = document.getElementsByClassName("cart-content")[0];
     const isUserExisting = checkIfUserExists();
 
@@ -107,7 +106,7 @@ function buyButtonClicked(){
     }
     
     updatetotal();
-    alert("Your order has been placed.");
+    alert("Your order has been placed. Press OK to see Checkout info.");
     sendCheckoutConfirmation();
 }
 
@@ -301,7 +300,8 @@ function sendCheckoutConfirmation() {
 
   // Compose email body
   let body = `Checkout Confirmation\n\n`;
-   body += `<Press Send Email to confirm your Purchase>\n\n`;
+   body += `<Press Send Email to confirm your Purchase>\n`;
+   body += `Payment mode: COD (Cash On Delivery)\n\n`;
   body += `User Information:\n`;
   body += `Username: ${username}\n`;
   body += `Email: ${email}\n`;
@@ -333,6 +333,9 @@ function sendCheckoutConfirmation() {
 
 
 
+window.addEventListener('beforeunload', function(event)
+  { localStorage.removeItem('cart');
+});
 
 // sign out function
 function signOut() {
