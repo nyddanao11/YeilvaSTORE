@@ -297,6 +297,9 @@ function sendCheckoutConfirmation() {
 
 
 
+window.addEventListener('beforeunload', function(event)
+  { localStorage.removeItem('cart');
+});
 
 // sign out function
 function signOut() {
