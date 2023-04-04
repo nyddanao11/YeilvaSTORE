@@ -280,8 +280,10 @@ function sendCheckoutConfirmation() {
   const user = JSON.parse(localStorage.getItem('user')) || {};
   const { username, name, email, address, city, province, zip, phone } = user;
 
+ 
   // Get cart items from local storage
   const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
 
   // Calculate total price
   let totalPrice = 0;
@@ -297,7 +299,8 @@ function sendCheckoutConfirmation() {
 
   // Compose email body
   let body = `Checkout Confirmation\n\n`;
-  body += `Payment mode: COD (Cash On Delivery)\n\n`;
+   body += `<Press Send Email to confirm your Purchase>\n`;
+   body += `Payment mode: COD (Cash On Delivery)\n\n`;
   body += `User Information:\n`;
   body += `Username: ${username}\n`;
   body += `Email: ${email}\n`;
@@ -309,38 +312,24 @@ function sendCheckoutConfirmation() {
   body += `Phone: ${phone}\n\n`;
   body += `Cart Information:\n`;
   body += `Item\t\tPrice\tQuantity\tSize\tColor\n`;
-  
-for (let item of cartItems) { 
-    body += `${item.title}\t${item.price}\t\t${item.quantity}\n`; 
-};
-
+  for (let item of cartItems) {
+    body += `${item.title}\t${item.price}\t\t${item.quantity}\n`;
+  }
   body += `Total Price: ₱${totalPrice.toFixed(2)}\n`;
   body += `Shipping Cost: ₱${shippingCost.toFixed(2)}\n`;
   body += `Grand Total: ₱${grandTotal.toFixed(2)}\n\n`;
+  body += `<Press Send Email to confirm your Purchase>\n`;
 
-  // Open a new window to confirm the email
-  const confirmWindow = window.open('', '_blank', 'width=500,height=300');
+  // Create the mailto link with the email body
+  const mailtoLink = `mailto:yeilvastore@gmail.com?subject=Checkout Confirmation&body=${encodeURIComponent(body)}`;
 
-  // Display the email body in the new window
-  const emailBody = confirmWindow.document.createElement('pre');
-  emailBody.innerText = body;
-  confirmWindow.document.body.appendChild(emailBody);
+  // Open the default email client with the mailto link
+  window.open(mailtoLink);
 
-  // Create a "Send Email" button in the new window
-  const sendButton = confirmWindow.document.createElement('button');
-  sendButton.innerText = 'Checkout';
-  confirmWindow.document.body.appendChild(sendButton);
-
-  // Add a click event listener to the "Send Email" button
-  sendButton.addEventListener('click', () => {
-    // Send the email with the email body 
-    const mailtoLink = `mailto:yeilvastore@gmail.com?subject=Checkout Confirmation&body=${encodeURIComponent(body)}`;
-    window.open(mailtoLink);
-
-});
+  // Remove cart items from local storage after checkout confirmation is sent
   localStorage.removeItem('cart');
-
 }
+
 
 
 
