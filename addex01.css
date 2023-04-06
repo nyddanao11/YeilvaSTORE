@@ -50,8 +50,15 @@ header{
 }
 .cart-el{
 	display: flex;
+	align-items: center;
+	justify-content: center;
 	gap: 2px;
-
+	padding: 1px;
+	background-color: black;
+/*	border:2px solid grey;*/
+	box-shadow:0 1px 4px hsl(0 4% 15% / 10%);
+	width: 65px;
+	
 }
 #cart-icon{
 	font-size: 1.8rem;
