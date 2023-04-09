@@ -277,7 +277,7 @@ header{
 }
 
 
-.modal1 {
+.modal {
   display: none;
   position: absolute;
   z-index: 200;
@@ -289,67 +289,53 @@ header{
   background-color: rgba(0,0,0,0.4);
 }
 
-.modal-content1 {
+.modal-content {
   background-color: #fefefe;
   margin: 15% auto;
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #888;
   width: 80%;
   max-width: 500px;
 }
 
-.close1 {
+.head-2{
+	height: 40px;
+	padding:3px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: black;
+	color: whitesmoke;
+	margin-bottom: 10px;
+}
+#okBtn2{
+width: 40px;
+border: none;
+background: #4BF21C;
+padding: 10px;
+margin-top: 10px;
+}
+#cancelBtn2{
+width: 60px;
+border: none;
+background: var(--main-color);
+padding: 10px;
+margin-top: 10px;
+}
+.close {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
+  padding-right: 8px;
 }
 
-.close1:hover,
-.close1:focus {
-  color: black;
+.close:hover,
+.close:focus {
+  color: white;
   text-decoration: none;
   cursor: pointer;
 }
-
-.modal2 {
-  display: none;
-  position: absolute;
-  z-index: 200;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4);
-}
-
-
-.modal-content2 {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 500px;
-}
-
-.close2 {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close2:hover,
-.close2:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-
-
 
 @media (max-width: 1080px){
 	.nav{
