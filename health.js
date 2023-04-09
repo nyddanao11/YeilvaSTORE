@@ -87,28 +87,59 @@ function checkIfUserExists() {
 }
 
 
+function buyButtonClicked() {
+  const cartContent = document.getElementsByClassName("cart-content")[0];
+  const isUserExisting = checkIfUserExists();
 
-function buyButtonClicked(){
-    const cartContent = document.getElementsByClassName("cart-content")[0];
-    const isUserExisting = checkIfUserExists();
+  if (!isUserExisting) {
+    return;
+  }
 
-    if (!isUserExisting){
-       return;
-    }
+  if (cartContent.children.length === 0) {
+    notification1(); // Call the custom alert function instead of using alert()
+    return;
+  }
 
-    if(cartContent.children.length === 0) {
-        alert("Your cart is empty. Please add items to your cart before placing an order.");
-        return;
-    }
-    
-    while (cartContent.hasChildNodes()){
-        cartContent.removeChild(cartContent.firstChild);
-    }
-    
-    updatetotal();
-    alert("Your order has been placed. Press OK to see Checkout info.");
-    sendCheckoutConfirmation();
+  while (cartContent.hasChildNodes()) {
+    cartContent.removeChild(cartContent.firstChild);
+  }
+
+  updatetotal();
+
+  notification2(); // Call the custom alert function instead of using alert()
 }
+
+
+function notification1() {
+  // Open the custom alert
+  document.getElementById('myCustomAlert1').style.display = "block";
+
+  // Close the custom alert when OK button is clicked
+  document.getElementById('okBtn1').addEventListener('click', function() {
+    document.getElementById('myCustomAlert1').style.display = "none";
+    return;
+  });
+}
+
+
+function notification2() {
+  // Open the custom alert
+  document.getElementById('myCustomAlert2').style.display = "block";
+
+  // Close the custom alert when cancel button is clicked
+  document.getElementById('cancelBtn2').addEventListener('click', function() {
+    document.getElementById('myCustomAlert2').style.display = "none";
+    return;
+  });
+
+  // Close the custom alert when OK button is clicked
+  document.getElementById('okBtn2').addEventListener('click', function() {
+    document.getElementById('myCustomAlert2').style.display = "none";
+    sendCheckoutConfirmation(); // Call sendCheckoutConfirmation() after OK button is clicked
+  });
+}
+
+
 
 
 
