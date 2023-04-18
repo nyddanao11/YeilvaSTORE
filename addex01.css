@@ -339,17 +339,20 @@ margin-top: 10px;
 
 
 .accord{
-	height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin: 15px 25px;
+	border-top: 1px solid;
+	padding:15px 10px
+
 }
 .accordion{
-	width: 65%;
+	width: 100%;
 	background-color: black;
 	padding: 30px;
 	border-radius: 30px;
-	color: white;
+	color: white;	
 }
 
 .accordion .accordion-title{
