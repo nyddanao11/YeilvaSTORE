@@ -217,7 +217,7 @@ section{
 .content-btn:hover{
 	cursor: pointer;
 	background-color:gray;
-	color: black;
+/*	color: black;*/
 }
 
 
