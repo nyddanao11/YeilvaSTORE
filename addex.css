@@ -204,6 +204,23 @@ section{
 }
 
 
+.content-btn{
+	width: 150px;
+	padding: 10px;
+	margin: 10px;
+	background-color: black;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	border: none;
+}
+.content-btn:hover{
+	cursor: pointer;
+	background-color:gray;
+	color: black;
+}
+
+
 @media (max-width: 1080px){
 	.nav{
 		padding: 15px;
