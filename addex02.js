@@ -62,20 +62,54 @@ function ready() {
 
 }
 
-
 function buyButtonClicked(){
     const cartContent = document.getElementsByClassName("cart-content")[0];
-    if (cartContent.children.length === 0) {
+    const isUserExisting = checkIfUserExists();
+
+    if (!isUserExisting){
+       return;
+    }
+
+    if(cartContent.children.length === 0) {
         alert("Your cart is empty. Please add items to your cart before placing an order.");
         return;
     }
+    
     while (cartContent.hasChildNodes()){
         cartContent.removeChild(cartContent.firstChild);
     }
-    updatetotal();
-    alert("Your order has been placed.");
-    sendCheckoutConfirmation();
+     updatetotal();
+
+  notification2(); // Call the custom alert function instead of using alert()
 }
+
+
+function notification2() {
+  const closingSpan2 = document.getElementById("closing2"); // Get the element by ID
+
+  closingSpan2.addEventListener("click", function() {
+    document.getElementById('myCustomAlert2').style.display = "none";
+    localStorage.removeItem('cart'); 
+    return; 
+  });
+
+  // Open the custom alert
+  document.getElementById('myCustomAlert2').style.display = "block";
+
+  // Close the custom alert when cancel button is clicked
+  document.getElementById('cancelBtn2').addEventListener('click', function() {
+    document.getElementById('myCustomAlert2').style.display = "none";
+    localStorage.removeItem('cart'); 
+    return;
+  });
+
+  // Close the custom alert when OK button is clicked
+  document.getElementById('okBtn2').addEventListener('click', function() {
+    document.getElementById('myCustomAlert2').style.display = "none";
+    sendCheckoutConfirmation(); // Call sendCheckoutConfirmation() after OK button is clicked
+  });
+}
+
 
 
 
