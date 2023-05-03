@@ -62,6 +62,32 @@ function ready() {
 
 }
 
+
+
+function checkIfUserExists() {
+  let userFound = false;
+
+  // loop through all keys in local storage
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    const value = JSON.parse(localStorage.getItem(key));
+
+    // check if the user object is found and has a password
+    if (value && value.password !== undefined && value.password !== "") {
+      userFound = true;
+      break;
+    }
+  }
+
+  // if user information is not found, prompt an alert and return
+  if (!userFound) {
+    alert("Please sign up to continue");
+    return false;
+  }
+
+  return true;
+}
+
 function buyButtonClicked(){
     const cartContent = document.getElementsByClassName("cart-content")[0];
     const isUserExisting = checkIfUserExists();
@@ -112,24 +138,66 @@ function notification2() {
 
 
 
+function removeCartItem(e) {
+  const buttonClicked = e.target;
+  const cartItem = buttonClicked.closest('.cart-box');
+  const cartItemTitle = cartItem.querySelector('.cart-product-title').innerText;
 
-function removeCartItem(event){
-    const buttonClicked = event.target;
-    buttonClicked.parentElement.remove();
-    updatetotal();
+  let cartItemsList = JSON.parse(localStorage.getItem('cart')) || [];
 
-     var cartCount = document.getElementById("cart-count");
-  var numCartItems = document.querySelectorAll(".cart-box").length;
-  cartCount.innerHTML = numCartItems;
+  // Find index of item to remove
+  const itemIndex = cartItemsList.findIndex((item) => item.title === cartItemTitle);
+
+  // Remove item from cartItemsList
+  if (itemIndex !== -1) {
+    cartItemsList.splice(itemIndex, 1);
+    // Save updated cart items to local storage
+    localStorage.setItem('cart', JSON.stringify(cartItemsList));
+  }
+
+  cartItem.remove();
+  updatetotal();
 }
 
-function quantityChanged(event) {
-    const input = event.target;
-    if(isNaN(input.value) || input.value <= 0){
-        input.value = 1;
 
-    }
-     updatetotal();
+
+
+// function removeCartItem(e) {
+//   const buttonClicked = e.target;
+//   const cartItem = buttonClicked.closest('.cart-box');
+//   const cartItemTitle = cartItem.querySelector('.cart-product-title').innerText;
+  
+//   let cartItemsList = JSON.parse(localStorage.getItem('cart')) || [];
+
+//   // Remove item from cartItemsList
+//   cartItemsList = cartItemsList.filter((item) => item.title !== cartItemTitle);
+
+//   // Save cart items to local storage
+//   localStorage.setItem('cart', JSON.stringify(cartItemsList));
+
+//   cartItem.remove();
+//   updatetotal();
+// }
+
+
+
+function quantityChanged(e) {
+  const input = e.target;
+  const cartItem = input.closest('.cart-box');
+  const cartItemTitle = cartItem.querySelector('.cart-product-title').innerText;
+
+  let cartItemsList = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Find item in cartItemsList
+  const itemIndex = cartItemsList.findIndex((item) => item.title === cartItemTitle);
+
+  // Update item quantity
+  cartItemsList[itemIndex].quantity = input.value;
+
+  // Save cart items to local storage
+  localStorage.setItem('cart', JSON.stringify(cartItemsList));
+
+  updatetotal();
 }
 
 
@@ -150,6 +218,7 @@ function addCartClicked(e) {
   addProductToCart(title, price, productImg, color, size, item);
   updatetotal();
 }
+
 
 function addProductToCart(title, price, productImg, color, size, item) {
   const cartShopBox = document.createElement('div');
@@ -228,30 +297,34 @@ function addProductToCart(title, price, productImg, color, size, item) {
 }
 
 
-"use strict";
+'use strict';
+
+// let cartItemsList = JSON.parse(localStorage.getItem('cart')) || [];
 
 function displayUsername() {
   const usernameDisplay = document.getElementById('usernameDisplay');
   const username = getUsername();
   if (username !== null) {
     usernameDisplay.textContent = `Logged in as: ${username}`;
+  } else {
+    usernameDisplay.textContent = 'Not logged in';
   }
   hideSignUpButton();
 }
 
 function hideSignUpButton() {
   const username = getUsername();
-  const signUpButton = document.querySelector("#sign-up-btn");
-  const signOutButton = document.querySelector("#sign-out-btn");
+  const signUpButton = document.querySelector('#sign-up-btn');
+  const signOutButton = document.querySelector('#sign-out-btn');
 
   if (username !== null) {
     // user is signed in
-    signUpButton.style.display = "none";
-    signOutButton.style.display = "block";
+    signUpButton.style.display = 'none';
+    signOutButton.style.display = 'block';
   } else {
     // user is not signed in
-    signUpButton.style.display = "block";
-    signOutButton.style.display = "none";
+    signUpButton.style.display = 'block';
+    signOutButton.style.display = 'none';
   }
 }
 
@@ -260,7 +333,7 @@ function getUsername() {
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
     const value = JSON.parse(localStorage.getItem(key));
-    if (key !== 'cart' && value.password !== undefined) {
+    if (value && value.password !== undefined) {
       signedInUser = key;
       break;
     }
@@ -269,7 +342,6 @@ function getUsername() {
 }
 
 window.onload = displayUsername;
-
 
 
  // localStorage.clear();
@@ -299,7 +371,7 @@ function sendCheckoutConfirmation() {
 
   // Compose email body
   let body = `Checkout Confirmation\n\n`;
-  body += `<Press Send Email to confirm your Purchase>\n\n`;
+   body += `<Press Send Email to confirm your Purchase>\n\n`;
   body += `User Information:\n`;
   body += `Username: ${username}\n`;
   body += `Email: ${email}\n`;
@@ -317,7 +389,7 @@ function sendCheckoutConfirmation() {
   body += `Total Price: ₱${totalPrice.toFixed(2)}\n`;
   body += `Shipping Cost: ₱${shippingCost.toFixed(2)}\n`;
   body += `Grand Total: ₱${grandTotal.toFixed(2)}\n\n`;
-   body += `<Press Send Email to confirm your Purchase>\n`;
+  body += `<Press Send Email to confirm your Purchase>\n`;
 
   // Create the mailto link with the email body
   const mailtoLink = `mailto:yeilvastore@gmail.com?subject=Checkout Confirmation&body=${encodeURIComponent(body)}`;
@@ -331,9 +403,6 @@ function sendCheckoutConfirmation() {
 
 
 
-window.addEventListener('beforeunload', function(event)
-  { localStorage.removeItem('cart');
-});
 
 // sign out function
 function signOut() {
