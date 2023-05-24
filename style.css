@@ -1,271 +1,139 @@
-body{
+*{
+  font-family: "Poppins", sans-serif;
   margin:0;
   padding:0;
+  scroll-padding-top: 2rem;
+  scroll-behavior: smooth;
   box-sizing: border-box;
-  overflow-x: hidden;
-}
-
-
-.primary-header img{
-  margin: 1.2rem;
-  width:50px;
-  height: 50px;
-}
-
-
-.primary-header {
-  align-items: center;
-  justify-content: space-between;
-  z-index:10000;
-  position: relative;
-/*  margin-right: 40px;*/
-
-}
-
-
-#mobile-nav-toggle{
-  display: none;
-}
-
-.flex{
-  display: flex;
-  gap: var(--gap, 1rem);
-
-}
-
-#primary-navigation{
   list-style: none;
-  margin: 0;
-  padding: 0;
-   background: hsla(0 0% 100% / 0.1);
-  backdrop-filter: blur(0.5rem);
-  z-index: 1100;
+  text-decoration: none;
 }
 
-@supports(backdrop-filter: blur(1rem)) {
-  .primary-navigation{
-     background: hsla(0 0% 100% / 0.1);
-  backdrop-filter: blur(0.5rem);
-  }
+:root{
+  --main-color:#fd4646;
+  --text-color:#171424;
+  --bg-color:#fff;
+
 }
 
+body{
+  color: var(--text-color);
 
-#primary-navigation{
+}
+.contained {
+  max-width: 1080px;
+  margin-left: 50px;
+/* margin:auto;*/
+  width:90%;
+ }
+/*@media only screen and (min-width:360px) {
+  .contain{
+   margin:auto;
+  width:90%;
+ }
+}*/
+
+
+header{
+  display: flex;
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--bg-color);
+  box-shadow:0 1px 4px hsl(0 4% 15% / 10%);
+  z-index:100;
+}
+.nav{
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  
-  }
-
-#primary-navigation a{
-    text-decoration: none;
-  
-  }
-
-#primary-navigation a > [aria-hidden ="true"]{
-    font-weight: 700;
-    margin-inline-end: 0.75em;
-  }
-  nav ul{
- 
-    list-style: none;
-  }
- 
-
-nav ul li a{
-/*  text-decoration:none; */
-  list-style-type: none;
-  display: inline-block;
-  padding:5px 10px;
-}
-nav ul li  a{
-  color:black;
-  text-decoration: none;
-  font-weight: bold;
-  margin-inline-end: 0.75em;
-   font-family: monospace;
-  
-}
-nav ul li a:hover{
-  color:#05981d;
-  transition: 0.3s;
-   
-}
-
-.myDropdown{
-  display: none;
- 
+  padding: 20px 0px;
 }
 
 
-nav ul li .myDropdown li{
-  width:150px;
-  padding: 10px;
-  color:black;
-  text-decoration: none;
-  font-weight: bold;
-  text-align: left;
-  z-index:1100;
-  }
-
- nav ul li button {
+.link{
   border: none;
   background: none;
- }
+  text-decoration: none;
+  color: black;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  padding: 0;
 
-  nav ul li:hover button{
-    color: #05981d;
-    cursor: pointer;
- }
-
-  nav ul li:hover .myDropdown li{
-    color: green;
-    cursor: pointer;
-  }
-
- 
-  .myDropdown2{
-    display: none;
 }
 
-
-#outerDropdown1.show{
-  overflow-y: scroll;
-  width: 150px;
-  height: 150px;
+.link:hover{
+color: black;
+font-weight: bold;
 }
 
-#outerDropdown.show {
-  display: block;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index:1100;
-  margin-left: -150px;
-  overflow-y: scroll;
-  width: 200px;
-  height: 220px;
-  /*max-width: 200px;
-  max-height:300px;*/
+.dropdown{
+  position: relative;
+
 }
 
-#outerDropdown, #innerDropdown1, #innerDropdown2{
-position: relative;
-overflow-y: scroll;
-z-index: 1200;
-}
-
-  #outerDropdown.show, #outerDropdown1.show {
-    display: block;
-    /* Additional styles to make the dropdown menu visible */
-     
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index:1100;
-  padding: 10px 15px;
-  margin-left: -140px;
-}
-
-#innerDropdown1.show, #innerDropdown2.show, #outerDropdown1.show{
-    display: block;
-    /* Additional styles to make the dropdown menu visible */
-    position: absolute;
-    padding: 10px 15px;
-    margin-top:30px;
-    margin-left: -120px;
-    z-index: 1100;
-}
-
-#outerDropdown,  #innerDropdown1, #innerDropdown2, #outerDropdown1{
+ .dropdown > .link + .dropdown-menu{
   display: none;
-}
-
-.show {
-  display: block;
-}
-
-
- 
-@media (max-width: 35em) {
-#primary-navigation{
-    position: fixed;
-    z-index: 1000;
-   --gap:2em;
-    inset:0 0 0 40%;
-    flex-direction:column;
-    padding: min(30vh, 10rem) 2em;
-  
-  transform: translateX(100%);
-  transition: transform 350ms ease-out;
-   
-    
-
-  }
-
- #primary-navigation[data-visible = "true"]{
-    transform:translateX(0%);
-  }
-
-#hamburger {
-  display: inline-block;
-}
-
-#close {
-  display: none;
-}
-
-#primary-navigation[data-visible="true"] ~ #mobile-nav-toggle #hamburger {
-  display: none;
-}
-
-#primary-navigation[data-visible="true"] ~ #mobile-nav-toggle #close {
-  display: inline-block;
-}
-
-
-#mobile-nav-toggle{
-  display: block;
   position: absolute;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  border: 0;
-  width:1rem;
-  z-index: 9999;
-  aspect-ratio: 1;
-  top: 2rem;
-  right: 2rem;
-  }
-
-   .show {
-  display: block;
-}
+  z-index: 1;
+  left: 0;
+  top: calc(100% + .75rem);
+  background-color: white ;
+  padding: .75rem;
+  border-radius: .25rem;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
+  transition: 0.3sec
 
 }
+.dropdown > .link + .dropdown-menu.show {
+ display: grid;
+ grid-template-columns: repeat(2, max-content);
+ gap: 2rem;
+}
 
+.dropdown-links{
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+/*
+.maincontent{
+ margin: 0 5px;
+padding: 10px;
+}*/
+
+.feat{
+/*  display: flex;*/
+  max-width: 600px;
+  margin-top: 60px;
+ margin-left: auto;
+  margin-right: auto;
+  padding:60px 0px 0px;
+  position: relative;
+}
+
+/*
 .slide-show{
 position: relative;
+}*/
+/* .main-carousel {
+  width: 75%;
+  margin: 0 auto;
+      
+}*/
+ .carousel-cell {
+  width: 100%;
+  height: auto;
 }
-    .main-carousel {
-      width: 75%;
-      margin: 0 auto;
-     
-     
-    }
-    .carousel-cell {
-      width: 100%;
-      height: auto;
-    }
    
-
 
    .scroll{
   display: grid;
   margin-top: 50px;
-
-
 }
+
 .media-scroller{
   display: grid;
   grid-auto-flow: column;
@@ -280,17 +148,14 @@ position: relative;
 }
 
  .media-scroller img{
-
   scroll-snap-align: start;
 }
 
-}
 .media-element{
   display: grid;
   gap: 2px;
   grid-template-rows: min-content;
  padding:2px;
- background:#05981d;
  border-radius: 3px;
  box-shadow: 5px 5px 5px #ccc;
 
@@ -302,22 +167,24 @@ position: relative;
 
 }
 
+.fashion{
+
+  padding: 10px;
+
+}
+
+
 .add-on{
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 
 }
-.cloth-on{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 15px;
-  margin-top: 15px;
-}
 .clothing-1{
-  width: 110px;
+   flex: 1 1 150px ;
   letter-spacing: 2px;
   text-align: center;
   background: black;
@@ -328,7 +195,7 @@ position: relative;
 }
 
 .clothing-2{
-  width: 110px;
+   flex: 1 1 150px ;
   text-align: center;
   letter-spacing: 2px;
   background: red;
@@ -338,7 +205,7 @@ position: relative;
   text-decoration: none;
 }
 .clothing-3{
-  width: 110px;
+   flex: 1 1 150px ;
   text-align: center;
   letter-spacing: 4px;
   background: brown;
@@ -349,21 +216,30 @@ position: relative;
 }
 
 
-.container{
-  max-width: 1068px;
-  margin:auto;
-  width:100%;
+.title{
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  margin-top: 10px;
 }
-
 .section-title{
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 600;
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  padding: 10px;
+ border: 1px solid dimgray;
+  color: black;
+  max-width: 300px;
+  margin-top: 5px;
 }
+
 
 .shop{
   margin-top:2rem;
+  background-color: #EFEFEF;
+  padding: 20px;
+/*   box-shadow: 5px 5px 5px #ccc;*/
 }
 .shop-content{
   display: grid;
@@ -378,6 +254,7 @@ position: relative;
   padding: 10px;
   border: 1px solid var(--text-color);
   transition:0.4s;
+
 }
 .product-img{
   width:100%;
@@ -394,18 +271,74 @@ position: relative;
   font-weight: 500;
 }
 
-@media(max-width:740px){
-  .add-on{
-    box-sizing: border-box;
-    margin-left:2px;
-    margin-right: 5px;
-  }
-
+.sign-Up{
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
 }
 
 
+.btn-signout{
+  display: flex;
+  margin: 7px auto 15px auto;
+  padding: 10px 15px;
+  border: none;
+  background:var(--main-color);
+  color: var(--bg-color);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
 
-.featured h1{
+}
+.btn-signout:hover{
+  background: var(--text-color);
+}
+
+.btn-signup{
+  display: flex;
+  margin: 7px auto 15px auto;
+  padding: 10px 15px;
+  border: none;
+  background: #05e699;
+  color: var(--bg-color);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;  
+
+}
+.btn-signup:hover{
+  background: black;
+  color: white;
+}
+
+#sign-up-btn{
+  display:block;
+}
+#sign-out-btn{
+  display: none;
+}
+.signed{
+  text-decoration: none;
+}
+.btn-buy{
+  display: flex;
+  margin: 1.5rem auto 0 auto;
+  padding: 12px 20px;
+  border: none;
+  background: var(--main-color);
+  color: var(--bg-color);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.btn-buy:hover{
+  background: var(--text-color);
+}
+
+
+.featured h3{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -415,93 +348,22 @@ position: relative;
 margin-bottom: 0px;
   
 }
-.featured h1 span{
+.featured h3 span{
   color:red;
 }
-
-
-
-#apklink{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-}
-
- #apklink .applink{
-  background-color: #05981d;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
- #apklink .applink:hover{
-      /*color:#818E81;
-      background-color: #79D479;*/
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
-        0 3px 6px rgba(0, 0, 0, 0.23);
-    transform: translate(0px, -8px);
-}
-
-.social-link{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 4px;
-	margin-top:15px;
-	margin-bottom: 20px;
-}
-
-.social-link .fa {
-  padding: 20px;
-  font-size: 30px;
-  width: 50px;
-  text-align: center;
-  text-decoration: none;
-}
-
-/* Add a hover effect if you want */
-.social-link .fa:hover {
-  opacity: 0.7;
-}
-
-/* Set a specific color for each brand */
-
-/* Facebook */
-.fa-facebook {
-  background: #3B5998;
-  color: white;
-}
-
-/* Twitter */
-.fa-instagram {
- background:linear-gradient(to right,red,yellow);
-  color: white;
-}
-.fa-youtube {
-  background: red;
-  color: white;
-}
-
 
 
 .product-cards{
   display:grid;
   font-family: sans-serif;
   background: #f2f2f2;
+  padding: 6px;
  }
 
 
 .gallery-1 img {
    width:100%;
-  height:auto%;
+  height:auto;
   object-fit: cover;
 }
 
@@ -509,17 +371,15 @@ margin-bottom: 0px;
 .gallery-1{
   display: grid;
   width: 100%;
-
   grid-template-columns: repeat(4, 1fr); 
   grid-auto-rows: auto;
- 
-  grid-gap: 10px; 
+  grid-gap: 5px; 
 }
 
 @media only screen and (max-width: 600px) {
   .gallery-1{
     grid-template-columns: repeat(2, 1fr);
-/*    gap: 10px; */
+    grid-gap: 5px;
 
   }
 }
@@ -527,6 +387,7 @@ margin-bottom: 0px;
 @media only screen and (min-width: 1200px) {
   .gallery-1 {
     grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
 
   }
 }
@@ -544,7 +405,6 @@ margin-bottom: 0px;
 
 .content{
   width: 100%;
-/*  height:80%;*/
   text-align: center;
   border-radius: 3px;
   cursor: pointer;
@@ -577,17 +437,20 @@ margin-bottom: 0px;
 
 
 .slidermain{
-	min-height:100vh;
+	width:100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	background-color: #EFEFEF;
+/*  box-shadow: 5px 5px 5px #ccc;*/
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .slide-container{
 	max-width:1120px;
 	width: 100%;
-	padding: 40px 0;
+	padding: 40px 0px;
 }
 
 .slide-content{
@@ -718,4 +581,100 @@ margin-bottom: 0px;
 		display: none;
 	}
 }
+
+
+.Link-social{
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+}
+
+#apklink{
+  margin-top: 30px;
+}
+
+ #apklink .applink{
+  background-color: #05981d;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+ #apklink .applink:hover{
+  color: black;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+        0 3px 6px rgba(0, 0, 0, 0.23);
+        opacity: .6;
+
+}
+
+.socialLink .social-link{
+  display: flex;
+  align-items: center;
+  margin:20px 10px;
+/*  margin-bottom: 20px;*/
+}
+
+ .link-1 {
+  padding: 15px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 10px;
+  border-radius: 4px;
+}
+
+/* Add a hover effect if you want */
+.social-link .fa:hover {
+  opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+/* Twitter */
+.fa-instagram {
+ background:linear-gradient(to right,red,yellow);
+  color: white;
+}
+.fa-youtube {
+  background: red;
+  color: white;
+}
+
+
+@media screen and (max-width: 360px){
+    .contained{
+    margin: auto;
+    padding-right: 30px;
+      width: 85%;
+    }
+    body{
+    padding-left: 5px;
+    padding-right: 5px;
+      width: 85%;
+
+    }
+  
+  }
+
+@media screen and (min-width: 1200px){
+    body{
+      width: 100%;
+    }
+  }
 
