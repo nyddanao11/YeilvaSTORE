@@ -283,8 +283,9 @@ font-weight: bold;
 	text-align: center;
 	margin-bottom: 1rem;
 	padding: 10px;
-	background-color: black;
-	color: white;
+/*	background-color: black;*/
+border: 1px solid gray;
+	color: black;
 	width: 300px;
 	margin-top: 5px;
 }
