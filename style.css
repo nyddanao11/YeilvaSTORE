@@ -262,6 +262,18 @@ position: relative;
 .price{
   font-weight: 500;
 }
+.shopnow{
+  display: flex;
+  margin: 7px auto 15px auto;
+  padding: 10px 15px;
+  border: none;
+  background-color: black;
+  color: var(--bg-color);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+
+}
 
 .sign-Up{
   display: flex;
